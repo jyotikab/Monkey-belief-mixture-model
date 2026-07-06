@@ -13,50 +13,24 @@ from scipy.optimize import minimize, differential_evolution
 import belief_mix_model as bmm
 
 
-# In[2]:
+
 
 
 data_dir = "../Lucas_Cecile/"
 
 
-# In[3]:
+
 
 
 processed_data = pd.read_csv(data_dir+"extracted_trajs.csv")
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
 
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[4]:
-
-
-# eg_trajs = processed_data.loc[(processed_data['Subject']=='Amidala')&(processed_data['Phase']=='Habituation')].copy()
-# eg_trajs
-
-
-# In[5]:
 
 
 spatial_kernels = ["row_scan",
@@ -66,7 +40,6 @@ spatial_kernels = ["row_scan",
                    ]
 
 
-# In[ ]:
 
 
 fittings = pd.DataFrame()
@@ -111,22 +84,6 @@ for grp in processed_data.groupby(['Subject','Phase','Species']):
     
 
 
-# In[ ]:
-
-
-fittings
-
-
-# In[ ]:
-
-
-fittings.columns
-
-
-# In[ ]:
-
-
 fittings.to_csv(data_dir+"fittings_with_beta_wo_effort.csv")
 
 
-# In[ ]:

@@ -59,7 +59,7 @@ def spatial_bias(start_r,start_c,kernel='row_scan'):
                 # Prefer nearby columns within that row
                 col_cost = abs(c - start_c)
 
-                K[r, c] = np.exp(-2.0 * row_cost - 0.3 * col_cost)
+                K[r, c] = np.exp(-3.0 * row_cost - 0.3 * col_cost)
 
         K /= K.sum()
         return K
@@ -75,7 +75,7 @@ def spatial_bias(start_r,start_c,kernel='row_scan'):
                 # Prefer nearby columns within that row
                 col_cost = abs(c - start_c)
 
-                K[r, c] = np.exp(-2.0 * col_cost - 0.3 * row_cost)
+                K[r, c] = np.exp(-3.0 * col_cost - 0.3 * row_cost)
 
         K /= K.sum()
         return K    
@@ -323,7 +323,7 @@ def simulate_case(kernel_type="spiral",
     
     for t in range(T):
         
-        K = spatial_bias(current[0], current[1], kernel=kernel)
+        K = spatial_bias(current[0], current[1], kernel=kernel_type)
         probs = policy_from_current(K, BR, BM,current, (wK, wR, wM),beta)
         #print(len(probs))
 

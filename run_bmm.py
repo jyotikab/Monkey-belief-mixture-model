@@ -12,7 +12,7 @@ import pylab as pl
 from scipy.optimize import minimize, differential_evolution
 #import belief_mix_model as bmm
 import belief_mix_model as bmm
-
+import pdb
 
 
 data_dir = "../Lucas_Cecile/"
@@ -22,6 +22,13 @@ data_dir = "../Lucas_Cecile/"
 
 
 processed_data = pd.read_csv(data_dir+"extracted_trajs.csv")
+
+random_agent = pd.read_csv(data_dir+"random_agent.csv")
+
+random_agent['Species'] = 'Random'
+
+all_data = pd.concat([processed_data, random_agent])
+
 
 
 spatial_kernels = ["row_scan",
@@ -34,7 +41,7 @@ spatial_kernels = ["row_scan",
 
 fittings = pd.DataFrame()
 
-for grp in processed_data.groupby(['Subject','Phase','Species']):
+for grp in all_data.groupby(['Subject','Phase','Species']):
     print(grp[0])
     data_trajs = []
     for grp2 in grp[1].groupby('Session'):

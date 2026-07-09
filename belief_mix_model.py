@@ -69,7 +69,7 @@ def spatial_bias(start_r,start_c,kernel='row_scan'):
 
         for r in range(GRID):
             for c in range(GRID):
-                # Penalize leaving the starting column
+                # Penalize leaving the starting row
                 row_cost = abs(r - start_r)
 
                 # Prefer nearby columns within that row

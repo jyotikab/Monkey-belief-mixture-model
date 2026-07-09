@@ -13,7 +13,7 @@ from scipy.optimize import minimize, differential_evolution
 #import belief_mix_model as bmm
 import belief_mix_model as bmm
 import pdb
-
+import sys
 
 data_dir = "../Lucas_Cecile/"
 
@@ -26,6 +26,9 @@ processed_data = pd.read_csv(data_dir+"extracted_trajs.csv")
 random_agent = pd.read_csv(data_dir+"random_agent.csv")
 
 random_agent['Species'] = 'Random'
+
+
+
 
 all_data = pd.concat([processed_data, random_agent])
 
@@ -83,6 +86,6 @@ for grp in all_data.groupby(['Subject','Phase','Species']):
 
 
 # fittings.to_csv(data_dir+"fittings_with_beta_wo_effort_wo_random_wo_sigma.csv")
-fittings.to_csv(data_dir+"fittings_with_beta_wo_effort_wo_random_wo_sigma_K_curr_loc.csv")
+fittings.to_csv(data_dir+"fittings_with_beta_wo_effort_wo_random_wo_sigma_K_curr_loc_with_random.csv")
 
 

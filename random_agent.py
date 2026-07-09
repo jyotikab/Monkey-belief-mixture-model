@@ -70,8 +70,8 @@ rows_ref = np.arange(1,6)
 # Reproducibility
 rng = np.random.default_rng(123)
 
-n_sessions = 20
-n_subjects = 10
+n_sessions = 10
+n_subjects = 20
 phases = ['Habituation','Test','Post-test']
 random_agent = pd.DataFrame()
 

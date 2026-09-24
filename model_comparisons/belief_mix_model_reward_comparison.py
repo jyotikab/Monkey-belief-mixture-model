@@ -501,6 +501,23 @@ def unpack_result(res, model):
     }
 
 
+def calc_dist_bw_traj(traj1,traj2):
+    
+    
+    dist = np.linalg.norm(np.array(traj1)-np.array(traj2),axis=1).sum()
+    corr = np.corrcoef(traj1,traj2)[0][1]
+    
+    return dist,corr
+
+def visit_map(traj):
+
+    V = np.zeros((GRID,GRID))
+
+    for r,c in traj:
+        V[r,c] += 1
+
+    return V
+
 def count_choices(data):
 #     return sum(max(0, len(traj) - 1) for traj in data)
     return sum([len(traj)-1 for traj in data])
